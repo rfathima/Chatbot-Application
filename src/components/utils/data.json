@@ -1,10 +1,14 @@
 [
     {
       "question": "Hi",
-      "answer": "Hello"
+      "answer": "Hello, How can i help you?"
     },
     {
       "question": "What is your name?",
       "answer": "My name is siri!"
+    },
+    {
+      "question": "I like you",
+      "answer": "Thank You!"
     }
-  ]
+]

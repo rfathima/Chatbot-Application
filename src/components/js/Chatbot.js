@@ -54,7 +54,7 @@ const Chatbot = () => {
 
     const userInput = question.toLowerCase(); // Convert user input to lowercase for case-insensitive comparison
 
-    const invalidKeywords = ["what", "is", "a", "the", "of"];
+    const invalidKeywords = ["what", "is", "a", "the", "of", "i", "you"];
 
     // Check if the user input matches any of the invalid keywords exactly
     const containsInvalidKeyword = invalidKeywords.includes(userInput.trim());

@@ -66,7 +66,7 @@ const Dashboard = () => {
             <Header />
             {showChatbot && <Chatbot faqPage={faqPage}/>}
             {showReportingPage && <ReportingPage />}
-            {showProfile && <Profile />} {/* Assuming you have a Profile component */}
+            {showProfile && <Profile />}
           </div>
         </div>
       </div>
