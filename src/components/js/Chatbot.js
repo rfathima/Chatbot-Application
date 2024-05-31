@@ -44,10 +44,8 @@ const Chatbot = ({ toggleChatWindow }) => {
     if (!speechRecognition) return;
  
     if (!voiceAssistanceActive) {
-      console.log("start voice");
       speechRecognition.start(); // Start speech recognition
     } else {
-      console.log("stop voice");
       speechRecognition.stop(); // Stop speech recognition
     }
  

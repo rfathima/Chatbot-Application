@@ -11,8 +11,8 @@ const ReportingPage = () => {
     fetch('/api/total-stats')
       .then(response => response.json())
       .then(data => {
-        setTotalQuestions(data.totalQuestions);
-        setTotalUsers(data.totalUsers);
+        setTotalQuestions(data.totalQuestions.toString());
+        setTotalUsers(data.totalUsers.toString());
       })
       .catch(error => console.error('Error fetching total stats:', error));
   }, []);
@@ -39,9 +39,9 @@ const ReportingPage = () => {
                 fill="#F23A1D"
               />
             </svg>
-            </div>  
+          </div>  
         </CardDataStats>
-        <CardDataStats title="Total Questions" total={totalQuestions} rate="2.59%" levelUp>
+        <CardDataStats title="Total Questions" total={totalQuestions.toString()} rate="2.59%" levelUp>
         <div className=' bg-slate-200 w-[40px] h-[40px] rounded-full flex justify-center items-center'>
           <svg 
             className="fill-primary dark:fill-white"
@@ -57,7 +57,7 @@ const ReportingPage = () => {
           </svg>
           </div>
         </CardDataStats> 
-        <CardDataStats title="Total Users" total={totalUsers} rate="0.95%" levelDown>
+        <CardDataStats title="Total Users" total={totalUsers.toString()} rate="0.95%" levelDown>
         <div className='bg-slate-200 w-[40px] h-[40px] rounded-full flex justify-center items-center'>
           <svg
             className="fill-primary dark:fill-white"

@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Dashboard from './components/js/Dashboard';
-import Profile from './components/js/Profile';
-import ReportingPage from './components/js/ReportingPage';
 import Chatbot from './components/js/Chatbot';
 
 const App = () => {
