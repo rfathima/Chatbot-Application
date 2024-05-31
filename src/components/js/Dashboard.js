@@ -65,8 +65,8 @@ const Dashboard = ({ page, pathname }) => {
     <div className="container-fluid">
       <div className="flex">
         <div className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${isSidebarOpen ? 'block' : 'hidden'} lg:hidden`} onClick={toggleSidebar}></div>
-        <div className={`fixed z-50 lg:relative w-[330px] bg-black min-h-screen sidebar transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:translate-x-0`}>
-        <div className="flex items-center justify-start pt-[50px]">
+        <div className={`fixed z-50 w-[330px] bg-black h-screen lg:sticky lg:top-0 sidebar transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:translate-x-0`}>
+          <div className="flex items-center justify-start pt-[50px]">
             <img className='w-[150px] ml-4 lg:ml-[25px] mt-4 lg:mt-0' alt="company-logo" src={Logo} />
           </div>
           <div className="flex flex-col items-start pt-10 lg:pt-[50px] justify-center align-middle ml-5">
