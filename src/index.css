@@ -53,3 +53,15 @@ body.dark header {
   border-bottom: 1px solid #ffffff;
   background: #000;
 }
+
+body.dark .dark-mode-icon {
+  display: inline-block;
+}
+
+body.dark .light-mode-icon {
+  display: none;
+}
+
+body.dark .mode-container {
+  background: black;
+}
