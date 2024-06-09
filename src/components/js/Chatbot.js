@@ -111,7 +111,7 @@ const Chatbot = ({ toggleChatWindow }) => {
   };
  
   return (
-    <div className={`flex flex-col items-center justify-center ${location.pathname === "/" ? 'min-h-screen bg-gradient-to-b from-black-600 shadow-md' : 'fixed bottom-4 right-4 bg-gradient-to-b from-white shadow-md dark:bg-gray-800 '}`}>
+    <div className={`flex flex-col items-center justify-center ${location.pathname === "/" ? 'fixed bottom-1 w-[80%] bg-gradient-to-b from-black-600 shadow-md' : 'fixed bottom-4 right-4 bg-gradient-to-b from-white shadow-md dark:bg-gray-800 '}`}>
       <div className={`relative ${location.pathname === "/" ? 'h-3/4 w-3/4' : 'h-full w-80 lg:w-96'} bg-white rounded-lg shadow-md overflow-hidden`}>
         {location.pathname !== "/" && (
           <button onClick={handleClose} className="absolute top-4 right-4 bg-transparent border-none">

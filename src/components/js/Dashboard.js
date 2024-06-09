@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaComments, FaChartBar, FaUser } from 'react-icons/fa';
+import { FaComments, FaChartBar, FaUser, FaCog } from 'react-icons/fa'; // Import FaCog for settings icon
 import Chatbot from './Chatbot';
 import ReportingPage from './ReportingPage';
 import Header from './Header';
@@ -7,12 +7,14 @@ import Logo from '../images/logo_main_small.png';
 import Profile from './Profile';
 import ChatbotToggleButton from './ChatbotToggleButton';
 import { Link, useNavigate } from 'react-router-dom';
+import Settings from './Settings'; // Import the Settings component
 
 const Dashboard = ({ page, pathname }) => {
   const [showChatbot, setShowChatbot] = useState(page === 'chatbot');
   const [showReportingPage, setShowReportingPage] = useState(page === 'reporting');
   const [showProfile, setShowProfile] = useState(page === 'profile');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Default to false for small screens  
+  const [showSettings, setShowSettings] = useState(page === 'settings'); // Add state for settings
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isChatbotVisible, setIsChatbotVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -21,14 +23,22 @@ const Dashboard = ({ page, pathname }) => {
       setShowProfile(true);
       setShowChatbot(false);
       setShowReportingPage(false);
+      setShowSettings(false);
     } else if (page === 'reporting') {
       setShowReportingPage(true);
       setShowChatbot(false);
+      setShowProfile(false);
+      setShowSettings(false);
+    } else if (page === 'settings') { // Add this block for settings
+      setShowSettings(true);
+      setShowChatbot(false);
+      setShowReportingPage(false);
       setShowProfile(false);
     } else {
       setShowChatbot(true);
       setShowReportingPage(false);
       setShowProfile(false);
+      setShowSettings(false);
     }
   }, [page]);
 
@@ -53,6 +63,13 @@ const Dashboard = ({ page, pathname }) => {
     }
   };
 
+  const handleSettingsClick = () => { // Add this handler for settings
+    navigate('/settings');
+    if (isSidebarOpen) {
+      toggleSidebar();
+    }
+  };
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -65,7 +82,7 @@ const Dashboard = ({ page, pathname }) => {
     <div className="container-fluid">
       <div className="flex">
         <div className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${isSidebarOpen ? 'block' : 'hidden'} lg:hidden`} onClick={toggleSidebar}></div>
-        <div className={`fixed z-50 w-[330px] bg-black h-screen lg:sticky lg:top-0 sidebar transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:translate-x-0`}>
+        <div className={`fixed z-50 w-[330px] bg-black min-h-screen lg:sticky lg:top-0 sidebar transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:translate-x-0`}>
           <div className="flex items-center justify-start pt-[50px]">
             <img className='w-[150px] ml-4 lg:ml-[25px] mt-4 lg:mt-0' alt="company-logo" src={Logo} />
           </div>
@@ -82,12 +99,20 @@ const Dashboard = ({ page, pathname }) => {
               </button>
               <div className="text-white flex items-center ml-3 font-medium hover:text-red-600">Reporting Page</div>
             </div>
-            <div onClick={handleProfileClick} className={`flex cursor-pointer ${showProfile ? 'text-red-600' : ''}`}>
+            <div onClick={handleProfileClick} className={`mb-5 flex cursor-pointer ${showProfile ? 'text-red-600' : ''}`}>
               <button className="px-4 py-4 rounded-full bg-white hover:bg-gray-200 focus:outline-none flex items-center">
                 <FaUser />
               </button>
               <Link to="/profile" className="flex justify-center">
                 <div className="text-white flex items-center ml-3 font-medium hover:text-red-600">Profile</div>
+              </Link>
+            </div>
+            <div onClick={handleSettingsClick} className={`flex cursor-pointer ${showSettings ? 'text-red-600' : ''}`}> {/* Add this block for settings */}
+              <button className="px-4 py-4 rounded-full bg-white hover:bg-gray-200 focus:outline-none flex items-center">
+                <FaCog />
+              </button>
+              <Link to="/settings" className="flex justify-center">
+                <div className="text-white flex items-center ml-3 font-medium hover:text-red-600">Settings</div>
               </Link>
             </div>
           </div>
@@ -98,6 +123,7 @@ const Dashboard = ({ page, pathname }) => {
             {showChatbot && <Chatbot toggleChatWindow={toggleChatbotVisibility} />}
             {showReportingPage && <ReportingPage />}
             {showProfile && <Profile />}
+            {showSettings && <Settings />} {/* Add this line for settings */}
           </div>
           {pathname !== '/' && (
             <>
